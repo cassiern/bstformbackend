@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/bethel-code-test', {
 	useNewUrlParser: true,
 	useCreateIndex: true,
+	useUnifiedTopology: true,
 	useFindAndModify: false
 });
 
