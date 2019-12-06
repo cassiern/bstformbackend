@@ -1,13 +1,11 @@
 const express = require('express');
-const app = express();
-require('./db/db');
+const app     = express();
 const bodyParser = require('body-parser');
-const cors = require('cors');
+const cors    = require('cors');
+const session = require('express-session');
 
+require('./db/db');
 
-
-const postsController = require('./controllers/posts.js');
-const usersController = require('./controllers/users.js');
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -18,8 +16,17 @@ const corsOptions = {
 	optionsSuccessStatus: 200
 }
 app.use(cors(corsOptions));
-//allowing my react to talk to my server
 
+app.use(session({
+	secret: '1a2B3c4Z5y',
+	resave: false,
+	saveUninitialized: false
+
+}));
+
+
+const postsController = require('./controllers/posts.js');
+const usersController = require('./controllers/users.js');
 
 //url path to controllers
 app.use('/posts', postsController);
