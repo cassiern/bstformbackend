@@ -4,7 +4,7 @@ const router = express.Router();
 const User = require('../models/users');
 
 
-//CREATE user
+//CREATE (REGISTER) user
 router.post('/register', async(req, res) => {
 
 		const password = req.body.password;
@@ -68,7 +68,7 @@ router.post('/login', async(req, res) => {
 				})
 			}
 		}else{
-			//something is wrong again
+			//telling user that something is wrong again
 			res.json({
 				status: {
 					code: 200,

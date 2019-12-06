@@ -65,7 +65,7 @@ router.get('/:id', async (req, res) => {
 })
 
 
-//edit movie 
+//edit 
 router.put('/:id', async (req,res) => {
 	try{
 		const postToUpdate = await Post.findByIdAndUpdate(req.params.id, req.body, {new: true});
