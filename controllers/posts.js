@@ -2,8 +2,9 @@ const express = require('express');
 const router = express.Router();
 const Post = require('../models/posts');
 
-//get route
 
+
+//get route
 router.get('/', async (req, res) => {
 	console.log('get route')
 	try{
@@ -46,7 +47,6 @@ router.post('/', async (req, res) => {
 
 
 //update/edit route
-//get movie by id
 router.get('/:id', async (req, res) => {
 	try{
 		const onePost = await Post.findById(req.params.id);
@@ -63,6 +63,8 @@ router.get('/:id', async (req, res) => {
 		res.send(err)
 	}
 })
+
+
 //edit movie 
 router.put('/:id', async (req,res) => {
 	try{
@@ -82,37 +84,23 @@ router.put('/:id', async (req,res) => {
 })
 
 
-
-
-
-
 //delete route
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+router.delete('/:id', async(req,res) =>{
+	try{
+		const deletePost = await Post.findByIdAndRemove(req.params.id);
+		console.log(deletePost, '<-- deleted Post in Express')
+		res.json({
+			status: {
+				code: 200,
+				message: 'Post successfully deleted'
+			},
+			data: deletePost
+		})
+	}catch(err){
+		console.log(err, '<-- error in express delete route');
+		res.send(err);
+	}
+})
 
 
 
