@@ -44,13 +44,75 @@ router.post('/', async (req, res) => {
 	}
 })
 
-//show route
-
 
 //update/edit route
+//get movie by id
+router.get('/:id', async (req, res) => {
+	try{
+		const onePost = await Post.findById(req.params.id);
+		res.json({
+			status: {
+			code: 200,
+			message: 'Success'
+		},
+			data: onePost
+		})
+
+	}catch(err){
+		console.log(err, '<-- error in edit express route');
+		res.send(err)
+	}
+})
+//edit movie 
+router.put('/:id', async (req,res) => {
+	try{
+		const postToUpdate = await Post.findByIdAndUpdate(req.params.id, req.body, {new: true});
+		console.log(req.params.id, req.body, '<-- params and body');
+		res.json({
+			status: {
+				code: 201,
+				message: 'Post updated successfully'
+			},
+			data: postToUpdate
+		})
+	}catch(err){
+		console.log(err, '<-- error in updating route')
+		res.send(err);
+	}
+})
+
+
+
+
 
 
 //delete route
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
