@@ -15,7 +15,7 @@ router.post('/register', async(req, res) => {
 		console.log('RIGHT BEFORE THE TRY IN REGI ROUTE')
 
 	try{
-		const createdUser = await User.create(req.body);
+		const createdUser = await User.create({email: req.body.email});
 		console.log(createdUser, '<-- USER CREATED');
 
 		req.session.userId = createdUser._id;
