@@ -94,6 +94,7 @@ router.get('/logout', (req, res) => {
 		if(err){
 			res.send(err);
 		}else{
+			console.log('User logged out')
 			res.json({
 				status: {
 					code: 200,
