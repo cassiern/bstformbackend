@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 
-mongoose.connect('mongodb://localhost/bethel-code-test-1', {
+mongoose.connect('mongodb://localhost/bethel-code-test-final', {
 	useNewUrlParser: true,
 	useCreateIndex: true,
 	useUnifiedTopology: true,
